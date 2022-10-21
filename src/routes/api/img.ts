@@ -28,6 +28,13 @@ imgRoute.get("/", async (req, res) => {
         .send("Please Enter The (Height) As A Correct Number");
     }
 
+    const fileExist = "./resize";
+    fs.pathExists(fileExist, async (err, exists) => {
+      if (!exists) {
+        return fs.mkdirSync(fileExist);
+      }
+    });
+
     await sharp(`./images/${filename}.jpg`)
       .resize({
         width: width,
