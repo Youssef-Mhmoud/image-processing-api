@@ -1,6 +1,6 @@
 # Image Processing API
 
-## First, Information help you to know how to use it:
+## Information help you to know how to use it:
 
 ```
 For example: http://localhost:3000/api/images?filename=(Enter The Image Name)&width=(Enter The Width)&height=(Enter The Hight)
