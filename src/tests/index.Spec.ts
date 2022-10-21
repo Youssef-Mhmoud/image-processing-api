@@ -9,7 +9,7 @@ const height = 200;
 
 describe("1- Test If Image Is Exist", () => {
   it("The Image Should Be Exist", () => {
-    return expect(`../../resize/${filename}-(${width} x ${height}).jpg`).toBe(`../../resize/${filename}-(${width} x ${height}).jpg`);
+    return expect(`../../image/${filename}-(${width} x ${height}).jpg`).toBe(`../../image/${filename}-(${width} x ${height}).jpg`);
   });
 });
 
