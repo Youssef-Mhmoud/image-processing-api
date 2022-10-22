@@ -33,9 +33,16 @@ imgRoute.get("/", async (req, res) => {
                 return fs_extra_1.default.mkdirSync(fileExist);
             }
         });
-        await (0, imgResizing_1.default)(filename, width, height);
         const imgloc = path_1.default.resolve("./") + `/resize/${filename}-(${width} x ${height}).jpg`;
-        res.sendFile(imgloc);
+        fs_extra_1.default.pathExists(imgloc, async (_err, exists) => {
+            if (exists) {
+                return res.sendFile(imgloc);
+            }
+            else {
+                await (0, imgResizing_1.default)({ filename, width, height });
+                res.sendFile(imgloc);
+            }
+        });
     });
 });
 exports.default = imgRoute;

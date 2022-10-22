@@ -4,13 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sharp_1 = __importDefault(require("sharp"));
-const resizingImg = async (filename, width, height) => {
-    await (0, sharp_1.default)(`./images/${filename}.jpg`)
+const resizingImg = async (re) => {
+    await (0, sharp_1.default)(`./images/${re.filename}.jpg`)
         .resize({
-        width: width,
-        height: height,
+        width: re.width,
+        height: re.height,
     })
-        .toFile(`./resize/${filename}-(${width} x ${height}).jpg`)
+        .toFile(`./resize/${re.filename}-(${re.width} x ${re.height}).jpg`)
         .then(() => console.log("done..."));
 };
 exports.default = resizingImg;

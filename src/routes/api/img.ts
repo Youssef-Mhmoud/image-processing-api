@@ -34,12 +34,17 @@ imgRoute.get("/", async (req, res) => {
         return fs.mkdirSync(fileExist);
       }
     });
+    
+    const imgloc = path.resolve("./") + `/resize/${filename}-(${width} x ${height}).jpg`;
 
-    await resizingImg(filename, width, height);
-
-    const imgloc =
-      path.resolve("./") + `/resize/${filename}-(${width} x ${height}).jpg`;
-    res.sendFile(imgloc);
+    fs.pathExists(imgloc, async (_err, exists: unknown) => {
+      if (exists) {
+        return res.sendFile(imgloc);
+      } else {
+        await resizingImg({filename, width, height});
+        res.sendFile(imgloc);
+      }
+    });
   });
 });
 

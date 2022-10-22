@@ -1,12 +1,18 @@
 import sharp from "sharp";
 
-const resizingImg = async (filename: string, width: number, height: number) => {
-  await sharp(`./images/${filename}.jpg`)
+type resizeFunc = {
+  filename: string,
+  width: number,
+  height: number
+}
+
+const resizingImg = async (re: resizeFunc) => {
+  await sharp(`./images/${re.filename}.jpg`)
     .resize({
-      width: width,
-      height: height,
+      width: re.width,
+      height: re.height,
     })
-    .toFile(`./resize/${filename}-(${width} x ${height}).jpg`)
+    .toFile(`./resize/${re.filename}-(${re.width} x ${re.height}).jpg`)
     .then(() => console.log("done..."));
 };
 
