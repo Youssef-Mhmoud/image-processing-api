@@ -1,11 +1,11 @@
-import { Router } from "express";
+import { Router,Request, Response } from "express";
 import fs from "fs-extra";
 import path from "path";
 import resizingImg from "./imgResizing";
 
 const imgRoute = Router();
 
-imgRoute.get("/", async (req, res) => {
+imgRoute.get("/", async (req: Request, res: Response): Promise<void> => {
   const filename = req.query.filename as string;
   const width = +(req.query.width as string);
   const height = +(req.query.height as string);
