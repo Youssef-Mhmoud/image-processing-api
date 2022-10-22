@@ -16,7 +16,7 @@ imgRoute.get("/", async (req, res) => {
       return res.status(404).send("Please Enter The (Filename) Correct");
     }
 
-    if (isNaN(width) || width  <= 0) {
+    if (isNaN(width) || width <= 0) {
       return res
         .status(404)
         .send("Please Enter The (Width) As A Correct Number");
@@ -35,13 +35,12 @@ imgRoute.get("/", async (req, res) => {
       }
     });
 
-  await resizingImg(filename, width,  height);
-  
-  const imgloc =
-    path.resolve("./") + `/resize/${filename}-(${width} x ${height}).jpg`;
-    res.sendFile(imgloc);
-});
+    await resizingImg(filename, width, height);
 
+    const imgloc =
+      path.resolve("./") + `/resize/${filename}-(${width} x ${height}).jpg`;
+    res.sendFile(imgloc);
+  });
 });
 
 export default imgRoute;

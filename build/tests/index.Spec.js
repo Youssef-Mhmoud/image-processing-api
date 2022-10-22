@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const index_1 = __importDefault(require("../index"));
 const supertest_1 = __importDefault(require("supertest"));
 const request = (0, supertest_1.default)(index_1.default);
-const filename = 'fjord';
+const filename = "fjord";
 const width = 200;
 const height = 200;
 describe("1- Test If Image Is Exist", () => {
