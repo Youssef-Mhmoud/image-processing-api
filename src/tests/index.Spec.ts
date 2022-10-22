@@ -3,7 +3,7 @@ import supertest from "supertest";
 
 const request = supertest(index);
 
-const filename = 'fjod';
+const filename = 'fjord';
 const width = 200;
 const height = 200;
 

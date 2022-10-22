@@ -40,7 +40,6 @@ imgRoute.get("/", async (req, res) => {
   const imgloc =
     path.resolve("./") + `/resize/${filename}-(${width} x ${height}).jpg`;
     res.sendFile(imgloc);
-
 });
 
 });
