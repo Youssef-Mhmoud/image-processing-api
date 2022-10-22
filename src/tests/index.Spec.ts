@@ -1,5 +1,6 @@
 import index from "../index";
 import supertest from "supertest";
+import resizingImg from "../routes/api/imgResizing";
 
 const request = supertest(index);
 
@@ -8,10 +9,8 @@ const width = 200;
 const height = 200;
 
 describe("1- Test If Image Is Exist", () => {
-  it("The Image Should Be Exist", () => {
-    return expect(`../../image/${filename}-(${width} x ${height}).jpg`).toBe(
-      `../../image/${filename}-(${width} x ${height}).jpg`
-    );
+  it("The Image Should Be Exist", async () => {
+    return expect(await resizingImg({filename, width, height})).toBeUndefined();
   });
 });
 

@@ -5,13 +5,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const index_1 = __importDefault(require("../index"));
 const supertest_1 = __importDefault(require("supertest"));
+const imgResizing_1 = __importDefault(require("../routes/api/imgResizing"));
 const request = (0, supertest_1.default)(index_1.default);
 const filename = "fjord";
 const width = 200;
 const height = 200;
 describe("1- Test If Image Is Exist", () => {
-    it("The Image Should Be Exist", () => {
-        return expect(`../../image/${filename}-(${width} x ${height}).jpg`).toBe(`../../image/${filename}-(${width} x ${height}).jpg`);
+    it("The Image Should Be Exist", async () => {
+        return expect(await (0, imgResizing_1.default)({ filename, width, height })).toBeUndefined();
     });
 });
 describe("2- Test endpoint responses", () => {

@@ -34,7 +34,7 @@ imgRoute.get("/", async (req, res) => {
         return fs.mkdirSync(fileExist);
       }
     });
-    
+
     const imgloc = path.resolve("./") + `/resize/${filename}-(${width} x ${height}).jpg`;
 
     fs.pathExists(imgloc, async (_err, exists: unknown) => {
